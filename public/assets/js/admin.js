@@ -29,7 +29,7 @@ $(document).ready(function () {
         });
     
         // Update the form action with habitation_id
-        modal.find('form').attr('action', `${baseUrl}/update/house`);
+        // modal.find('form').attr('action', `${baseUrl}/update/house`);
     });
 
     // Ensure the correct type is selected in the dropdown
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
     // Log form data on submit
     $('#modifyForm').on('submit', function (event) {
-        event.preventDefault();
+        event.preventDefault(); 
         let formData = $(this).serializeArray();
         console.log("Form data being submitted:", formData);
         $.post($(this).attr('action'), formData, function (response) {
@@ -48,6 +48,7 @@ $(document).ready(function () {
             window.location.reload();
         }).fail(function (xhr, status, error) {
             console.error("Error submitting form:", error);
+            console.error("Response from server:", xhr.responseText);
         });
     });
     

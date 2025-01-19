@@ -1,6 +1,6 @@
 <?php
 /*
- * This is the file called bootstrap who's job is to make sure that all the
+ * This is the file called bootstrap whose job is to make sure that all the
  * required services, plugins, connections, etc. are loaded and ready to go
  * for every request made to the application.
  */
@@ -8,7 +8,7 @@ session_start();
 $ds = DIRECTORY_SEPARATOR;
 require(__DIR__ . $ds . '..' . $ds . '..' . $ds . 'vendor' . $ds . 'autoload.php');
 if(file_exists(__DIR__. $ds . 'config.php') === false) {
-	Flight::halt(500, 'Config file not found. Please create a config.php file in the app/config directory to get started.');
+    Flight::halt(500, 'Config file not found. Please create a config.php file in the app/config directory to get started.');
 }
 
 // It is better practice to not use static methods for everything. It makes your
@@ -37,9 +37,9 @@ require('routes.php');
 /*
  * You additionally could just define the routes in this file. It's up to you.
  * Example:
-	$router->get('/', function() {
-		echo 'Hello World!';
-	});
+    $router->get('/', function() {
+        echo 'Hello World!';
+    });
 */
 
 /*

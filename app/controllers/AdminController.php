@@ -50,7 +50,6 @@ class AdminController
             Flight::render('error', ['message' => "AdminController->createHouse(): " . $message]);
             exit;
         }
-
         Flight::redirect('/admin/houses');
     }
 
