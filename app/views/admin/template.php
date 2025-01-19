@@ -21,7 +21,7 @@ $baseUrl = Flight::get('flight.base_url');
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container">
                 <!-- Logo -->
-                <a class="navbar-brand" href="/<?= $baseUrl ?>/dashboard">
+                <a class="navbar-brand" href="<?= $baseUrl ?>/<?= $baseUrl ?>/dashboard">
                     <?php include 'layouts/logo.php'; ?>
                 </a>
                 <!-- Toggle Button for Mobile View -->
@@ -35,7 +35,7 @@ $baseUrl = Flight::get('flight.base_url');
                     <!-- Start -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/">Dashboard</a>
+                            <a class="nav-link" href="<?= $baseUrl ?>/admin/">Dashboard</a>
                         </li>
                         <li class="nav-item ms-3">
                             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#addHouseModal">Add New House</a>
@@ -73,13 +73,13 @@ $baseUrl = Flight::get('flight.base_url');
             <div class="offcanvas-body">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/auth/user">Login in an user account</a>
+                        <a class="nav-link" href="<?= $baseUrl ?>/auth/user">Login in an user account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/auth/admin">Login as another admin</a>
+                        <a class="nav-link" href="<?= $baseUrl ?>/auth/admin">Login as another admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/auth/logout">Logout</a>
+                        <a class="nav-link" href="<?= $baseUrl ?>/auth/logout">Logout</a>
                     </li>
                 </ul>
             </div>

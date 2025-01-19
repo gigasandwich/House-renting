@@ -46,4 +46,36 @@ class HouseModel
         $STH->execute([$houseId]);
         return $STH->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Get all houses with their main photo
+    public function getHousesWithPhotos()
+    {
+        $query = "
+            SELECT h.habitation_id, h.type_id, t.nom_type, h.chambres, h.loyer_par_jour, h.quartier, h.description, p.photo_url
+            FROM house_habitation h
+            JOIN house_type_habitation t ON h.type_id = t.type_id
+            LEFT JOIN house_photo_habitation p ON h.habitation_id = p.habitation_id
+            GROUP BY h.habitation_id
+        ";
+        $STH = $this->db->prepare($query);
+        $STH->execute();
+        return $STH->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Search houses by query
+    public function searchHouses($query)
+    {
+        $query = "%$query%";
+        $sql = "
+            SELECT h.habitation_id, h.type_id, t.nom_type, h.chambres, h.loyer_par_jour, h.quartier, h.description, p.photo_url
+            FROM house_habitation h
+            JOIN house_type_habitation t ON h.type_id = t.type_id
+            LEFT JOIN house_photo_habitation p ON h.habitation_id = p.habitation_id
+            WHERE h.description LIKE ? OR h.quartier LIKE ? OR t.nom_type LIKE ?
+            GROUP BY h.habitation_id
+        ";
+        $STH = $this->db->prepare($sql);
+        $STH->execute([$query, $query, $query]);
+        return $STH->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

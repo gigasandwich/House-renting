@@ -7,29 +7,23 @@ $baseUrl = Flight::get('flight.base_url');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title ?? "Main" ?></title>
+    <title><?= $title ?? "House Listings" ?></title>
     <!-- Framework css -->
     <link rel="stylesheet" href="<?= $baseUrl ?>/assets/framework/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= $baseUrl ?>/assets/framework/fontawesome-free-6.7.2-web/css/all.min.css">
     <!-- Custom css -->
     <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/style.css">
     <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/main.css">
-    <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/account.css">
-    <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/loading.css">
 </head>
 
 <body>
-    <!-- Loading animation -->
-    <?php include 'layouts/loading.php' ?>
-
     <header class="fixed-top shadow">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container">
                 <!-- Logo -->
-                <a class="navbar-brand" href="<?= $baseUrl ?>">
+                <a class="navbar-brand" href="<?= $baseUrl ?>/main">
                     <?php include 'layouts/logo.php'; ?>
                 </a>
-
                 <!-- Toggle Button for Mobile View -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,26 +37,24 @@ $baseUrl = Flight::get('flight.base_url');
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $baseUrl ?>/main">Home</a>
                         </li>
-                        <!-- Smooth Scroll Link -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#deposit-form">Make a deposit</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= $baseUrl ?>/main/account">Your account</a>
+                        <li class="nav-item ms-3">
+                            <a class="nav-link" href="<?= $baseUrl ?>/main/houses">Houses</a>
                         </li>
                     </ul>
 
+                    <!-- Search Form -->
+                    <form class="d-flex" role="search" method="GET" action="<?= $baseUrl ?>/main/search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+
                     <!-- End -->
                     <ul class="navbar-nav ms-auto d-flex gap-2 align-items-center">
-                        <!-- Username and balance -->
-                        <li class="nav-item d-flex align-items-center">
+                        <li class="nav-item d-flex align-items-center me-3">
                             <i class="fas fa-user text-primary me-2"></i>
                             <span class="fw-bold text-primary"> <?= $username ?></span>
                         </li>
-                        <li class="nav-item me-3" id="balance" value="<?= "$balance" ?>">
-                            <?= "$$balance" ?>
-                        </li>
-                        
+
                         <!-- Theme Switch Button -->
                         <li class="nav-item me-3">
                             <?php include 'layouts/btn-theme.php'; ?>
@@ -74,7 +66,6 @@ $baseUrl = Flight::get('flight.base_url');
                                 <i class="fas fa-cog"></i>
                             </button>
                         </li>
-                    </ul>
                 </div>
             </div>
         </nav>
@@ -88,10 +79,10 @@ $baseUrl = Flight::get('flight.base_url');
             <div class="offcanvas-body">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= $baseUrl ?>/auth/user">Login in another account</a>
+                        <a class="nav-link" href="<?= $baseUrl ?>/auth/user">Login in an user account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= $baseUrl ?>/auth/admin">Login as admin</a>
+                        <a class="nav-link" href="<?= $baseUrl ?>/auth/admin">Login as another admin</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= $baseUrl ?>/auth/logout">Logout</a>
@@ -101,60 +92,17 @@ $baseUrl = Flight::get('flight.base_url');
         </div>
     </header>
 
-    <main class="">
+    <main class="vh-100 overflow-auto container" style="max-height: 70vh;">
         <?php include $page . '.php' ?>
     </main>
 
-
-    <!-- Message Modal -->
-    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="messageModalLabel">Message</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p></p> <!-- The message will be inserted here -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <footer></footer>
 
     <!-- Framework Scripts -->
     <script src="<?= $baseUrl ?>/assets/framework/js/jquery-3.7.1.min.js"></script>
     <script src="<?= $baseUrl ?>/assets/framework/js/bootstrap.bundle.min.js"></script>
     <!-- Custom Scripts -->
     <script src="<?= $baseUrl ?>/assets/js/main.js"></script>
-    <script src="<?= $baseUrl ?>/assets/js/gift.js"></script>
-    <script src="<?= $baseUrl ?>/assets/js/account.js"></script>
-    <script src="<?= $baseUrl ?>/assets/js/deposit.js"></script>
-    <!-- Loading animation, not to use jquery for these -->
-    <script>
-        <?php if (isset($_SESSION['loading']) && $_SESSION['loading'] === true): ?>
-            document.querySelector('#loading').style.display = 'flex';
-            document.querySelector('main').style.display = 'none';
-            setTimeout(function () {
-                document.querySelector('#loading').style.display = 'none';
-                document.querySelector('main').style.display = 'block';
-            }, 2500);
-        <?php endif; ?>
-        <?php unset($_SESSION['loading']); ?>
-    </script>
-
-    <!-- Message modal, also not to use jquery -->
-    <?php if (!empty($message)): ?>
-        <script>
-            var messageModal = new bootstrap.Modal(document.getElementById('messageModal'));
-            document.querySelector('#messageModal .modal-body p').textContent = "<?= $message ?>";
-            messageModal.show();
-        </script>
-    <?php endif; ?>
-
 </body>
 
 </html>

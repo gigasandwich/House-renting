@@ -54,6 +54,15 @@ $router->group('/api', function () use ($router) {
     $router->get('/photos/@id', [AdminController::class, 'getPhotos']);
 });
 
+// ----------------------------------------------------
+// Main: User-facing pages
+// ----------------------------------------------------
+$router->group('/main', function () use ($router) {
+    $router->get('/', [MainController::class, 'renderHouses']);
+    $router->get('/houses', [MainController::class, 'renderHouses']);
+    $router->get('/search', [MainController::class, 'searchHouses']);
+    $router->get('/house/@id', [MainController::class, 'renderHouseDetail']);
+});
 
 // ----------------------------------------------------
 // CRUD
