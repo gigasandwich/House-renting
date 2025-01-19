@@ -1,0 +1,15 @@
+
+/* ---------------------------
+   SVG in the carousel
+--------------------------- */
+
+.carousel img {
+    width: 400px;
+    height: 400px;
+}
+
+#etu {
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+}

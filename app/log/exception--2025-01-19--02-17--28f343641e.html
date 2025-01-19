@@ -1,0 +1,18 @@
+
+Warning: Undefined variable $Flight in C:\xampp\htdocs\ETU003286\house\vendor\tracy\tracy\src\Tracy\BlueScreen\assets\page.phtml on line 17
+ErrorException: Undefined variable $Flight in C:\xampp\htdocs\ETU003286\house\vendor\tracy\tracy\src\Tracy\BlueScreen\assets\page.phtml:17
+Stack trace:
+#0 C:\xampp\htdocs\ETU003286\house\vendor\tracy\tracy\src\Tracy\Debugger\Debugger.php(361): Tracy\DevelopmentStrategy->handleError(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 17)
+#1 C:\xampp\htdocs\ETU003286\house\vendor\tracy\tracy\src\Tracy\BlueScreen\assets\page.phtml(17): Tracy\Debugger::errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 17)
+#2 C:\xampp\htdocs\ETU003286\house\vendor\tracy\tracy\src\Tracy\BlueScreen\BlueScreen.php(185): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\ETU003286\house\vendor\tracy\tracy\src\Tracy\BlueScreen\BlueScreen.php(135): Tracy\BlueScreen->renderTemplate(Object(Error), 'C:\\xampp\\htdocs...', false)
+#4 C:\xampp\htdocs\ETU003286\house\vendor\tracy\tracy\src\Tracy\Logger\Logger.php(150): Tracy\BlueScreen->renderToFile(Object(Error), 'C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\ETU003286\house\vendor\tracy\tracy\src\Tracy\Logger\Logger.php(70): Tracy\Logger->logException(Object(Error), 'C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\ETU003286\house\vendor\tracy\tracy\src\Tracy\Debugger\Debugger.php(560): Tracy\Logger->log(Object(Error), 'exception')
+#7 C:\xampp\htdocs\ETU003286\house\vendor\tracy\tracy\src\Tracy\Debugger\DevelopmentStrategy.php(50): Tracy\Debugger::log(Object(Error), 'exception')
+#8 C:\xampp\htdocs\ETU003286\house\vendor\tracy\tracy\src\Tracy\Debugger\DevelopmentStrategy.php(42): Tracy\DevelopmentStrategy->renderExceptionCli(Object(Error))
+#9 C:\xampp\htdocs\ETU003286\house\vendor\tracy\tracy\src\Tracy\Debugger\Debugger.php(322): Tracy\DevelopmentStrategy->handleException(Object(Error), false)
+#10 C:\xampp\htdocs\ETU003286\house\vendor\tracy\tracy\src\Tracy\Debugger\Debugger.php(224): Tracy\Debugger::exceptionHandler(Object(Error))
+#11 [internal function]: Tracy\Debugger::Tracy\{closure}(Object(Error))
+#12 {main}
+Tracy is unable to log error: Class name must be a valid object or a string
