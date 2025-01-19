@@ -51,7 +51,7 @@ class HouseModel
     public function getHousesWithPhotos()
     {
         $query = "
-            SELECT h.habitation_id, h.type_id, t.nom_type, h.chambres, h.loyer_par_jour, h.quartier, h.description, p.photo_url
+            SELECT h.habitation_id, h.type_id, t.nom_type, h.chambres, h.loyer_par_jour, h.quartier, h.description, MIN(p.photo_url) AS photo_url
             FROM house_habitation h
             JOIN house_type_habitation t ON h.type_id = t.type_id
             LEFT JOIN house_photo_habitation p ON h.habitation_id = p.habitation_id
@@ -67,7 +67,7 @@ class HouseModel
     {
         $query = "%$query%";
         $sql = "
-            SELECT h.habitation_id, h.type_id, t.nom_type, h.chambres, h.loyer_par_jour, h.quartier, h.description, p.photo_url
+            SELECT h.habitation_id, h.type_id, t.nom_type, h.chambres, h.loyer_par_jour, h.quartier, h.description, MIN(p.photo_url) AS photo_url
             FROM house_habitation h
             JOIN house_type_habitation t ON h.type_id = t.type_id
             LEFT JOIN house_photo_habitation p ON h.habitation_id = p.habitation_id
