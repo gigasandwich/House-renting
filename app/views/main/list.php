@@ -1,6 +1,6 @@
 <div class="row">
     <?php foreach ($houses as $house) { ?>
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4">
             <div class="card">
                 <a href="<?= $baseUrl ?>/main/house/<?= $house['habitation_id'] ?>">
                     <img src="<?= $baseUrl ?>/assets/img/houses/<?= $house['photo_url'] ?>" class="card-img-top" alt="House Photo">

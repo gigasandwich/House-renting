@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     if (header && main) {
         const headerHeight = header.offsetHeight;
-        main.style.marginTop = `${headerHeight + 50}px`;
+        main.style.marginTop = `${headerHeight + 20}px`;
     }
 });
 
