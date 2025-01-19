@@ -86,7 +86,7 @@ $baseUrl = Flight::get('flight.base_url');
         </div>
     </header>
 
-    <main class="vh-100 overflow-auto container" style="max-height: 90vh;">
+    <main class="vh-100 overflow-auto container" style="max-height: 70vh;">
         <?php include $page . '.php' ?>
     </main>
 
