@@ -164,8 +164,7 @@ class CrudModel
 
     }
     
-    public function uploadPic($file){
-        $folder = '/assets/img/houses/';
+    public function uploadPic($folder, $file){
         $file_name = basename($file['name']);
         $max_size = 5000000;
         $size = filesize($file['tmp_name']);
@@ -200,5 +199,11 @@ class CrudModel
             return false;
         }
    }
+
+    public function getLastInsertId()
+    {
+        return $this->db->lastInsertId();
+    }
+
 }
 

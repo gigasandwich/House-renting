@@ -18,15 +18,15 @@ INSERT INTO house_habitation (type_id, chambres, loyer_par_jour, quartier, descr
 (5, 2, 120.00, 'Bord de mer', 'Bungalow charmant avec vue sur la plage');
 
 INSERT INTO house_photo_habitation (habitation_id, photo_url) VALUES
-(1, 'photos/maison1_1.jpg'),
-(1, 'photos/maison1_2.jpg'),
-(2, 'photos/appartement1_1.jpg'),
-(2, 'photos/appartement1_2.jpg'),
-(3, 'photos/studio1.jpg'),
-(4, 'photos/villa1_1.jpg'),
-(4, 'photos/villa1_2.jpg'),
-(4, 'photos/villa1_3.jpg'),
-(5, 'photos/bungalow1.jpg');
+(1, 'maison1_1.jpg'),
+(1, 'maison1_2.jpg'),
+(2, 'appartement1_1.jpg'),
+(2, 'appartement1_2.jpg'),
+(3, 'studio1.jpg'),
+(4, 'villa1_1.jpg'),
+(4, 'villa1_2.jpg'),
+(4, 'villa1_3.jpg'),
+(5, 'bungalow1.jpg');
 
 INSERT INTO house_reservation_status (status_name) VALUES
 ('Confirmée'),

@@ -46,6 +46,12 @@
                                 <textarea type="text" class="form-control" name="description" rows="1">Description de la maison</textarea>
                             </div>
                         </div>
+                        <div class="col-md-12 col-12">
+                            <div class="mb-3">
+                                <label for="modal-photos" class="form-label">Photos</label>
+                                <input type="file" class="form-control" name="photos[]" multiple>
+                            </div>
+                        </div>
                     </div>
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-primary btn-lg">Add</button>
@@ -86,6 +92,8 @@
                         data-quartier="<?= $house['quartier'] ?>" data-description="<?= $house['description'] ?>">Edit</a>
 
                     <a href="<?= $baseUrl ?>/delete/house/?habitation_id=<?= $house['habitation_id'] ?>" class="btn btn-danger delete-btn">Delete</a>
+                    
+                    <a class="btn btn-info view-photos-btn" data-habitation_id="<?= $house['habitation_id'] ?>">View Photos</a>
                 </td>
             </tr>
         <?php } ?>
@@ -146,11 +154,44 @@
                                 <textarea type="text" class="form-control" name="description" rows="1"></textarea>
                             </div>
                         </div>
+                        <div class="col-md-12 col-12">
+                            <div class="mb-3">
+                                <label for="modal-photos" class="form-label">Photos</label>
+                                <input type="file" class="form-control" name="photos[]" multiple>
+                            </div>
+                        </div>
                     </div>
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-primary btn-lg">Modify</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- View Photos Modal -->
+<div class="modal fade" id="viewPhotosModal" tabindex="-1" aria-labelledby="viewPhotosModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewPhotosModalLabel">House Photos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="photosCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" id="photosCarouselInner">
+                        <!-- Photos will be dynamically inserted here -->
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#photosCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#photosCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

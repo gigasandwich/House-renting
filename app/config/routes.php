@@ -51,7 +51,7 @@ $router->group('/admin', function () use ($router) {
 // Ajax calls
 // ----------------------------------------------------
 $router->group('/api', function () use ($router) {
-    
+    $router->get('/photos/@id', [AdminController::class, 'getPhotos']);
 });
 
 

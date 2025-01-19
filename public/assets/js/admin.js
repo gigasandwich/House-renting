@@ -29,7 +29,7 @@ $(document).ready(function () {
         });
     
         // Update the form action with habitation_id
-        // modal.find('form').attr('action', `${baseUrl}/update/house`);
+        modal.find('form').attr('action', `${baseUrl}/update/house`);
     });
 
     // Ensure the correct type is selected in the dropdown
@@ -38,17 +38,23 @@ $(document).ready(function () {
         $(this).find(`[name="type_id"] option[value="${typeId}"]`).prop('selected', true);
     });
 
-    // Log form data on submit
-    $('#modifyForm').on('submit', function (event) {
-        event.preventDefault(); 
-        let formData = $(this).serializeArray();
-        console.log("Form data being submitted:", formData);
-        $.post($(this).attr('action'), formData, function (response) {
-            console.log("Response from server:", response);
-            window.location.reload();
-        }).fail(function (xhr, status, error) {
-            console.error("Error submitting form:", error);
-            console.error("Response from server:", xhr.responseText);
+
+    // View photos
+    $('.view-photos-btn').click(function () {
+        let habitationId = $(this).data('habitation_id');
+        $.get(`${baseUrl}/api/photos/${habitationId}`, function (photos) {
+            let carouselInner = $('#photosCarouselInner');
+            carouselInner.empty();
+            photos.forEach((photo, index) => {
+                let activeClass = index === 0 ? 'active' : '';
+                let carouselItem = `
+                    <div class="carousel-item ${activeClass}">
+                        <img src="${baseUrl}/assets/img/houses/${photo.photo_url}" class="d-block w-100" alt="House Photo">
+                    </div>
+                `;
+                carouselInner.append(carouselItem);
+            });
+            $('#viewPhotosModal').modal('show');
         });
     });
     

@@ -16,7 +16,6 @@ class AdminController
         $this->user = $_SESSION['user'];
     }
 
-
     public function renderHouses() {
         $houses = $this->houseModel->getHouses();
         $data = [
@@ -32,7 +31,6 @@ class AdminController
     // CRUD Methods
     // ----------------------------------------------------
 
-
     public function createHouse()
     {
         $data = [
@@ -45,6 +43,12 @@ class AdminController
 
         try {
             $this->crudModel->insert('habitation', $data);
+            $houseId = $this->crudModel->getLastInsertId();
+
+            // Handle file uploads
+            if (!empty($_FILES['photos']['name'][0])) {
+                $this->uploadFiles($houseId, $_FILES['photos']);
+            }
         } catch (\PDOException $e) {
             $message = $e->getMessage();
             Flight::render('error', ['message' => "AdminController->createHouse(): " . $message]);
@@ -53,36 +57,9 @@ class AdminController
         Flight::redirect('/admin/houses');
     }
 
-    function uploadFile($file)
-    {
-        $ds = DIRECTORY_SEPARATOR;
-        $uploadsDir = dirname(__DIR__, 2) . $ds . 'public' . $ds . 'assets' . $ds . 'img' . $ds . 'houses' . $ds;
-
-        // Avoid overwriting and duplocation (io ilay notenenin'i ramose t@ S2)
-        $uploadedFileName = time() . '_' . basename($file['name']);
-
-        // Check if the directory exists and is writable (for Linux)
-        if (!is_dir($uploadsDir) || !is_writable($uploadsDir)) {
-            $message = "Uploads directory does not exist or is not writable: $uploadsDir";
-            Flight::render('error', ['message' => "AdminController->uploadFile(): " . $message]);
-            exit;
-        }
-
-        // Move the uploaded file to the directory
-        if (!move_uploaded_file($file['tmp_name'], $uploadsDir . $uploadedFileName)) {
-            $message = "Error uploading file.";
-            Flight::render('error', ['message' => "AdminController->uploadFile(): " . $message]);
-            exit;
-        }
-
-        return $uploadedFileName; // We return it to use it later
-    }
-
-
     public function updateHouse()
     {
         $id = $_POST['habitation_id'];
-        error_log("updateHouse called with id: " . $id);
 
         $data = [
             'type_id' => $_POST['type_id'],
@@ -92,10 +69,13 @@ class AdminController
             'description' => $_POST['description']
         ];
 
-        error_log("Data to update: " . json_encode($data));
-
         try {
             $this->crudModel->update('habitation', $data, $id);
+
+            // Handle file uploads
+            if (!empty($_FILES['photos']['name'][0])) {
+                $this->uploadFiles($id, $_FILES['photos']);
+            }
         } catch (\PDOException $e) {
             error_log("AdminController->updateHouse(): " . $e->getMessage());
             Flight::render('error', ['message' => "AdminController->updateHouse(): " . $e->getMessage()]);
@@ -105,7 +85,6 @@ class AdminController
         Flight::redirect('/admin/houses');
     }
 
-
     public function deleteHouse()
     {
         $id = $_GET['habitation_id'];
@@ -113,4 +92,27 @@ class AdminController
         Flight::redirect('/admin/houses');
     }
 
+    private function uploadFiles($houseId, $files)
+    {
+        $uploadDir = dirname(__DIR__, 2) . '/public/assets/img/houses/';
+        foreach ($files['name'] as $key => $name) {
+            if ($files['error'][$key] === UPLOAD_ERR_OK) {
+                $tmpName = $files['tmp_name'][$key];
+                $fileName = time() . '_' . basename($name);
+                $filePath = $uploadDir . $fileName;
+                if (move_uploaded_file($tmpName, $filePath)) {
+                    $this->crudModel->insert('photo_habitation', [
+                        'habitation_id' => $houseId,
+                        'photo_url' => $fileName
+                    ]);
+                }
+            }
+        }
+    }
+    
+    public function getPhotos($id)
+    {
+        $photos = $this->houseModel->getPhotosByHouseId($id);
+        Flight::json($photos);
+    }
 }
