@@ -1,0 +1,23 @@
+/* Main Image Styling */
+#mainPhotoContainer img {
+    height: 300px; 
+    object-fit: cover;
+}
+
+/* Horizontal Scrolling Thumbnails */
+#photoGallery {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+#photoGallery .clickable-photo {
+    height: 80px; /* Increased thumbnail size for better interaction */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+#photoGallery .clickable-photo:hover {
+    transform: scale(1.05); /* Slight hover effect for better interaction */
+}
+#photoGallery .active-thumbnail {
+    border: 3px solid #007bff; /* Highlight active thumbnail */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}

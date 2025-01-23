@@ -14,6 +14,7 @@ $baseUrl = Flight::get('flight.base_url');
     <!-- Custom css -->
     <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/style.css">
     <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/main.css">
+    <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/detail.css">
 </head>
 
 <body>
@@ -35,16 +36,42 @@ $baseUrl = Flight::get('flight.base_url');
                     <!-- Start -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $baseUrl ?>/main">Home</a>
+                            <a class="nav-link" href="<?= $baseUrl ?>/main" data-translate="home">Home</a>
                         </li>
                         <li class="nav-item ms-3">
-                            <a class="nav-link" href="<?= $baseUrl ?>/main/houses">Houses</a>
+                            <a class="nav-link" href="<?= $baseUrl ?>/main/houses" data-translate="houses">Houses</a>
+                        </li>
+                        <!-- Language Switcher -->
+                        <li class="nav-item dropdown me-3">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="languageDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="<?= $baseUrl ?>/assets/img/flags/en.jpg" alt="English"
+                                    style="width: 20px; height: 20px; margin-right: 5px;">
+                                English
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                                <li>
+                                    <a class="dropdown-item language-option" href="#" data-lang="en">
+                                        <img src="<?= $baseUrl ?>/assets/img/flags/en.jpg" alt="English"
+                                            style="width: 20px; height: 20px; margin-right: 5px;">
+                                        English
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item language-option" href="#" data-lang="fr">
+                                        <img src="<?= $baseUrl ?>/assets/img/flags/fr.png" alt="French"
+                                            style="width: 20px; height: 20px; margin-right: 5px;">
+                                        Français
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
 
                     <!-- Search Form -->
                     <form class="d-flex" role="search" method="GET" action="<?= $baseUrl ?>/main/search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                            name="query">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
 
@@ -103,6 +130,8 @@ $baseUrl = Flight::get('flight.base_url');
     <script src="<?= $baseUrl ?>/assets/framework/js/bootstrap.bundle.min.js"></script>
     <!-- Custom Scripts -->
     <script src="<?= $baseUrl ?>/assets/js/main.js"></script>
+    <script src="<?= $baseUrl ?>/assets/js/language.js"></script>
+    <script src="<?= $baseUrl ?>/assets/js/detail.js"></script>
 </body>
 
 </html>
