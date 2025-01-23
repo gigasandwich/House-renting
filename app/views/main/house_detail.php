@@ -15,7 +15,7 @@
 
 
         <!-- Reservation Form -->
-        <form id="reservationForm" class="mt-4 p-3 border rounded shadow-sm">
+        <form action="" id="reservationForm" class="mt-4 p-3 border rounded shadow-sm">
             <h4 class="mb-3" data-translate="reserve_this_house">Reserve this house</h4>
             <div class="mb-3">
                 <label for="arrivalDate" class="form-label" data-translate="arrival_date">Arival date</label>

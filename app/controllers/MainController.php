@@ -50,4 +50,7 @@ class MainController
         ];
         Flight::render('main/template', $data);
     }
+
+    /*Reservations*/
+    
 }
