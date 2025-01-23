@@ -101,7 +101,7 @@ $(document).ready(function () {
                 const carouselItem = $(this).closest(".carousel-item");
                 const isActive = carouselItem.hasClass("active");
 
-                carouselItem.remove(); // Remove the deleted photo from the carousel
+                carouselItem.remove();
 
                 // Adjust active carousel item if needed
                 if (isActive) {

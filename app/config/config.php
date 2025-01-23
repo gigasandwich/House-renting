@@ -72,7 +72,7 @@ return [
 		 'host' => '127.0.0.1',
 		 'dbname' => 'db_s2_ETU003286',
 		 'user' => 'ETU003286', 
-		 'password' => 'ycrOEEkI'					
+		 'password' => 'ycrOEEkI'
 
 		// uncomment the following line for sqlite
 		// 'file_path' => __DIR__ . $ds . '..' . $ds . 'database.sqlite'

@@ -19,6 +19,7 @@ class HouseModel
             SELECT h.habitation_id, h.type_id, t.nom_type, h.chambres, h.loyer_par_jour, h.quartier, h.description
             FROM house_habitation h
             JOIN house_type_habitation t ON h.type_id = t.type_id
+            GROUP BY h.habitation_id
         ";
         $STH = $this->db->prepare($query);
         $STH->execute();
@@ -32,6 +33,7 @@ class HouseModel
             FROM house_habitation h
             JOIN house_type_habitation t ON h.type_id = t.type_id
             WHERE h.habitation_id = ?
+            GROUP BY h.habitation_id
         ";
         $STH = $this->db->prepare($query);
         $STH->execute([$id]);
