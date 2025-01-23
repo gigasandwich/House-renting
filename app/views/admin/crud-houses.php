@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addHouseModalLabel">Add New House</h5>
+                <h5 class="modal-title" id="addHouseModalLabel" data-translate="add_house_modal_title">Add New House</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -12,49 +12,49 @@
                         <!-- Columns -->
                         <div class="col-md-6 col-12">
                             <div class="mb-3">
-                                <label for="modal-type_id" class="form-label">Type</label>
+                                <label for="modal-type_id" class="form-label" data-translate="type_label">Type</label>
                                 <select class="form-select" name="type_id" id="modal-type_id" required>
-                                    <option value="1">Maison</option>
-                                    <option value="2">Appartement</option>
-                                    <option value="3">Studio</option>
-                                    <option value="4">Villa</option>
-                                    <option value="5">Bungalow</option>
+                                    <option value="1" data-translate="house">Maison</option>
+                                    <option value="2" data-translate="apartment">Appartement</option>
+                                    <option value="3" data-translate="studio">Studio</option>
+                                    <option value="4" data-translate="villa">Villa</option>
+                                    <option value="5" data-translate="bungalow">Bungalow</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="mb-3">
-                                <label for="modal-chambres" class="form-label">Chambres</label>
+                                <label for="modal-chambres" class="form-label" data-translate="rooms_label">Rooms</label>
                                 <input type="number" class="form-control" name="chambres" value="1">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="mb-3">
-                                <label for="modal-loyer_par_jour" class="form-label">Loyer par jour</label>
+                                <label for="modal-loyer_par_jour" class="form-label" data-translate="rent_per_day_label">Rent per day</label>
                                 <input type="number" class="form-control" name="loyer_par_jour" step="0.01" value="100.00">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="mb-3">
-                                <label for="modal-quartier" class="form-label">Quartier</label>
+                                <label for="modal-quartier" class="form-label" data-translate="neighborhood_label">Neighborhood</label>
                                 <input type="text" class="form-control" name="quartier" value="Centre-ville">
                             </div>
                         </div>
                         <div class="col-md-12 col-12">
                             <div class="mb-3">
-                                <label for="modal-description" class="form-label">Description</label>
-                                <textarea type="text" class="form-control" name="description" rows="1">Description de la maison</textarea>
+                                <label for="modal-description" class="form-label" data-translate="description_label">Description</label>
+                                <textarea type="text" class="form-control" name="description" rows="1" data-translate="description_placeholder">Description de la maison</textarea>
                             </div>
                         </div>
                         <div class="col-md-12 col-12">
                             <div class="mb-3">
-                                <label for="modal-photos" class="form-label">Photos</label>
+                                <label for="modal-photos" class="form-label" data-translate="photos_label">Photos</label>
                                 <input type="file" class="form-control" name="photos[]" multiple>
                             </div>
                         </div>
                     </div>
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary btn-lg">Add</button>
+                        <button type="submit" class="btn btn-primary btn-lg" data-translate="add_button">Add</button>
                     </div>
                 </form>
             </div>
@@ -64,16 +64,16 @@
 
 <!-- List of the houses -->
 <table class="table table-bordered caption-top" id="modify-table">
-    <caption class="">Modify houses</caption>
+    <caption class="" data-translate="modify_houses_caption">Modify houses</caption>
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Type</th>
-            <th>Chambres</th>
-            <th>Loyer par jour</th>
-            <th>Quartier</th>
-            <th>Description</th>
-            <th>Actions</th>
+            <th data-translate="id_label">ID</th>
+            <th data-translate="type_label">Type</th>
+            <th data-translate="rooms_label">Chambres</th>
+            <th data-translate="rent_per_day_label">Loyer par jour</th>
+            <th data-translate="neighborhood_label">Quartier</th>
+            <th data-translate="description_label">Description</th>
+            <th data-translate="actions_label">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -89,11 +89,11 @@
                     <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modifyModal"
                         data-habitation_id="<?= $house['habitation_id'] ?>" data-type_id="<?= $house['type_id'] ?>"
                         data-chambres="<?= $house['chambres'] ?>" data-loyer_par_jour="<?= $house['loyer_par_jour'] ?>"
-                        data-quartier="<?= $house['quartier'] ?>" data-description="<?= $house['description'] ?>">Edit</a>
+                        data-quartier="<?= $house['quartier'] ?>" data-description="<?= $house['description'] ?>" data-translate="edit_button">Edit</a>
 
-                    <a href="<?= $baseUrl ?>/delete/house/?habitation_id=<?= $house['habitation_id'] ?>" class="btn btn-danger delete-btn">Delete</a>
+                    <a href="<?= $baseUrl ?>/delete/house/?habitation_id=<?= $house['habitation_id'] ?>" class="btn btn-danger delete-btn" data-translate="delete_button">Delete</a>
                     
-                    <a class="btn btn-info view-photos-btn" data-habitation_id="<?= $house['habitation_id'] ?>">View Photos</a>
+                    <a class="btn btn-info view-photos-btn" data-habitation_id="<?= $house['habitation_id'] ?>" data-translate="view_photos_button">View Photos</a>
                 </td>
             </tr>
         <?php } ?>
@@ -105,7 +105,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modifyModalLabel">Modify House</h5>
+                <h5 class="modal-title" id="modifyModalLabel" data-translate="modify_house_modal_title">Modify House</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -114,55 +114,55 @@
                         <!-- Columns -->
                         <div class="col-md-6 col-12">
                             <div class="mb-3">
-                                <label for="modal-habitation_id" class="form-label">House ID</label>
+                                <label for="modal-habitation_id" class="form-label" data-translate="house_id_label">House ID</label>
                                 <input type="text" class="form-control" name="habitation_id" readonly>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="mb-3">
-                                <label for="modal-type_id" class="form-label">Type</label>
+                                <label for="modal-type_id" class="form-label" data-translate="type_label">Type</label>
                                 <select class="form-select" name="type_id" id="modal-type_id" required>
-                                    <option value="1">Maison</option>
-                                    <option value="2">Appartement</option>
-                                    <option value="3">Studio</option>
-                                    <option value="4">Villa</option>
-                                    <option value="5">Bungalow</option>
+                                    <option value="1" data-translate="house">Maison</option>
+                                    <option value="2" data-translate="apartment">Appartement</option>
+                                    <option value="3" data-translate="studio">Studio</option>
+                                    <option value="4" data-translate="villa">Villa</option>
+                                    <option value="5" data-translate="bungalow">Bungalow</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="mb-3">
-                                <label for="modal-chambres" class="form-label">Chambres</label>
+                                <label for="modal-chambres" class="form-label" data-translate="rooms_label">Chambres</label>
                                 <input type="number" class="form-control" name="chambres">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="mb-3">
-                                <label for="modal-loyer_par_jour" class="form-label">Loyer par jour</label>
+                                <label for="modal-loyer_par_jour" class="form-label" data-translate="rent_per_day_label">Loyer par jour</label>
                                 <input type="number" class="form-control" name="loyer_par_jour" step="0.01">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="mb-3">
-                                <label for="modal-quartier" class="form-label">Quartier</label>
+                                <label for="modal-quartier" class="form-label" data-translate="neighborhood_label">Quartier</label>
                                 <input type="text" class="form-control" name="quartier">
                             </div>
                         </div>
                         <div class="col-md-12 col-12">
                             <div class="mb-3">
-                                <label for="modal-description" class="form-label">Description</label>
+                                <label for="modal-description" class="form-label" data-translate="description_label">Description</label>
                                 <textarea type="text" class="form-control" name="description" rows="1"></textarea>
                             </div>
                         </div>
                         <div class="col-md-12 col-12">
                             <div class="mb-3">
-                                <label for="modal-photos" class="form-label">Photos</label>
+                                <label for="modal-photos" class="form-label" data-translate="photos_label">Photos</label>
                                 <input type="file" class="form-control" name="photos[]" multiple>
                             </div>
                         </div>
                     </div>
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary btn-lg">Modify</button>
+                        <button type="submit" class="btn btn-primary btn-lg" data-translate="modify_button">Modify</button>
                     </div>
                 </form>
             </div>
@@ -175,7 +175,7 @@
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="viewPhotosModalLabel">House Photos</h5>
+                <h5 class="modal-title" id="viewPhotosModalLabel" data-translate="view_photos_modal_title">House Photos</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -192,11 +192,11 @@
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#photosCarousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
+                            <span class="visually-hidden" data-translate="previous">Previous</span>
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#photosCarousel" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
+                            <span class="visually-hidden" data-translate="next">Next</span>
                         </button>
                     </div>
                 </div>
@@ -204,6 +204,3 @@
         </div>
     </div>
 </div>
-
-
-

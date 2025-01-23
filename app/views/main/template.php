@@ -41,38 +41,13 @@ $baseUrl = Flight::get('flight.base_url');
                         <li class="nav-item ms-3">
                             <a class="nav-link" href="<?= $baseUrl ?>/main/houses" data-translate="houses">Houses</a>
                         </li>
-                        <!-- Language Switcher -->
-                        <li class="nav-item dropdown me-3">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="languageDropdown"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="<?= $baseUrl ?>/assets/img/flags/en.jpg" alt="English"
-                                    style="width: 20px; height: 20px; margin-right: 5px;">
-                                English
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                                <li>
-                                    <a class="dropdown-item language-option" href="#" data-lang="en">
-                                        <img src="<?= $baseUrl ?>/assets/img/flags/en.jpg" alt="English"
-                                            style="width: 20px; height: 20px; margin-right: 5px;">
-                                        English
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item language-option" href="#" data-lang="fr">
-                                        <img src="<?= $baseUrl ?>/assets/img/flags/fr.png" alt="French"
-                                            style="width: 20px; height: 20px; margin-right: 5px;">
-                                        Français
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
 
                     <!-- Search Form -->
                     <form class="d-flex" role="search" method="GET" action="<?= $baseUrl ?>/main/search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                             name="query">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <button class="btn btn-outline-success" type="submit" data-translate="search">Search</button>
                     </form>
 
                     <!-- End -->
@@ -85,6 +60,18 @@ $baseUrl = Flight::get('flight.base_url');
                         <!-- Theme Switch Button -->
                         <li class="nav-item me-3">
                             <?php include 'layouts/btn-theme.php'; ?>
+                        </li>
+                        <!-- Language Switcher -->
+                        <li class="nav-item dropdown me-3">
+                            <a class="nav-link d-flex align-items-center" href="#">
+                                <img id="currentLanguageFlag" src="<?= $baseUrl ?>/assets/img/flags/en.jpg"
+                                    alt="Language Flag" style="width: 20px; height: 20px; margin-right: 5px;">
+                                <select id="languageSelect" class="form-select form-select-sm"
+                                    style="width: auto; display: inline-block;">
+                                    <option value="en">English</option>
+                                    <option value="fr">Français</option>
+                                </select>
+                            </a>
                         </li>
                         <!-- Offcanvas Button (Always Visible) -->
                         <li class="nav-item me-3">
@@ -119,11 +106,9 @@ $baseUrl = Flight::get('flight.base_url');
         </div>
     </header>
 
-    <main class="overflow-auto container" style="max-height: 70vh;">
+    <main class="overflow-auto container" style="max-height: 80vh;">
         <?php include $page . '.php' ?>
     </main>
-
-    <footer></footer>
 
     <!-- Framework Scripts -->
     <script src="<?= $baseUrl ?>/assets/framework/js/jquery-3.7.1.min.js"></script>

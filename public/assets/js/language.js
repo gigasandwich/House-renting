@@ -1,61 +1,64 @@
-// language.js
-
-// Function to apply language based on the selected language
-function setLanguage(lang) {
-    // Store the selected language in localStorage
-    localStorage.setItem('selectedLanguage', lang);
-
-    // Change the language of the page dynamically
-    if (lang === 'fr') {
-        document.documentElement.setAttribute('lang', 'fr');
-        updateLanguageText('fr');
-    } else {
-        document.documentElement.setAttribute('lang', 'en');
-        updateLanguageText('en');
+let translations = {};
+function initializeLanguage() {
+    // Load (default english)
+    let savedLanguage = localStorage.getItem('selectedLanguage');
+    if (!savedLanguage) {
+        savedLanguage = 'en';
+        localStorage.setItem('selectedLanguage', savedLanguage);
     }
+
+    setLanguage(savedLanguage);
+    document.getElementById('languageSelect').value = savedLanguage;
 }
 
-// Function to update the text on the page according to the selected language
+function setLanguage(lang) {
+    const langData = {
+        en: { name: 'English', flag: `${baseUrl}/assets/img/flags/en.jpg` },
+        fr: { name: 'Français', flag: `${baseUrl}/assets/img/flags/fr.png` }
+    };
+
+    document.documentElement.setAttribute('lang', lang);
+
+    // Update the flag and page text
+    const currentLanguageFlag = document.getElementById('currentLanguageFlag');
+    currentLanguageFlag.src = langData[lang].flag;
+
+    updateLanguageText(lang);
+}
+
 function updateLanguageText(lang) {
-    // Example: You can modify specific text elements based on language selection
     const elements = document.querySelectorAll('[data-translate]');
-    
     elements.forEach(element => {
         const translationKey = element.getAttribute('data-translate');
-        element.textContent = getTranslation(translationKey, lang);
+        if (translations[lang] && translations[lang][translationKey]) {
+            element.textContent = translations[lang][translationKey];
+        }
     });
 }
 
-// Function to get the translation for a key (you can extend this with a proper translation object)
-function getTranslation(key, lang) {
-    const translations = {
-        en: {
-            'home': 'Home',
-            'houses': 'Houses',
-            'reserve': 'Reserve Now',
-            // Add more translations for 'en' language
-        },
-        fr: {
-            'home': 'Accueil',
-            'houses': 'Maisons',
-            'reserve': 'Réservez maintenant',
-            // Add more translations for 'fr' language
+function loadTranslations(callback) { // Mba asio doc kely le callback
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `${baseUrl}/assets/js/languages/translations.json`, true);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            translations = JSON.parse(xhr.responseText);
+            if (callback) callback();
+        } else {
+            console.error('Failed to load translations');
         }
     };
-
-    return translations[lang][key] || key;
+    xhr.send();
 }
 
-// Load the language on page load based on localStorage or default to 'en'
 document.addEventListener('DOMContentLoaded', function () {
-    const savedLanguage = localStorage.getItem('selectedLanguage') || 'en'; // Default to 'en'
-    setLanguage(savedLanguage);
+    loadTranslations(() => {
+        initializeLanguage();
 
-    // Add event listeners to language change options
-    document.querySelectorAll('.language-option').forEach(option => {
-        option.addEventListener('click', function (e) {
-            const lang = e.target.getAttribute('data-lang');
-            setLanguage(lang);
+        const languageSelect = document.getElementById('languageSelect');
+        languageSelect.addEventListener('change', function () {
+            const selectedLanguage = this.value;
+            localStorage.setItem('selectedLanguage', selectedLanguage);
+            setLanguage(selectedLanguage);
         });
     });
 });

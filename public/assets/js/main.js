@@ -1,5 +1,5 @@
 // This main file is for each view, not only for the view main  
-var baseUrl = '/ETU003286/20250120/public';
+var baseUrl = '/ETU003286/20250123/public';
 // Theme toggling
 $(document).ready(function () {
     const $html = $('html');
