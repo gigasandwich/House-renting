@@ -34,9 +34,9 @@ $baseUrl = Flight::get('flight.base_url');
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <!-- Start -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="<?= $baseUrl ?>/admin/">Dashboard</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item ms-3">
                             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#addHouseModal">Add New House</a>
                         </li>

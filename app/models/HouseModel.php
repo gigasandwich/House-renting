@@ -41,7 +41,7 @@ class HouseModel
     
     public function getPhotosByHouseId($houseId)
     {
-        $query = "SELECT photo_url FROM house_photo_habitation WHERE habitation_id = ?";
+        $query = "SELECT * FROM house_photo_habitation WHERE habitation_id = ?";
         $STH = $this->db->prepare($query);
         $STH->execute([$houseId]);
         return $STH->fetchAll(PDO::FETCH_ASSOC);

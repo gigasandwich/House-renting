@@ -16,11 +16,13 @@ class AdminController
         $this->user = $_SESSION['user'];
     }
 
-    public function renderHouses() {
+    // Render the houses management page
+    public function renderHouses()
+    {
         $houses = $this->houseModel->getHouses();
         $data = [
             'title' => 'House Management',
-            'page' => 'crud_houses',
+            'page' => 'crud-houses',
             'username' => $this->user['username'],
             'houses' => $houses
         ];
@@ -31,6 +33,7 @@ class AdminController
     // CRUD Methods
     // ----------------------------------------------------
 
+    // Create a new house
     public function createHouse()
     {
         $data = [
@@ -57,6 +60,7 @@ class AdminController
         Flight::redirect('/admin/houses');
     }
 
+    // Update an existing house
     public function updateHouse()
     {
         $id = $_POST['habitation_id'];
@@ -85,6 +89,7 @@ class AdminController
         Flight::redirect('/admin/houses');
     }
 
+    // Delete a house
     public function deleteHouse()
     {
         $id = $_GET['habitation_id'];
@@ -92,6 +97,19 @@ class AdminController
         Flight::redirect('/admin/houses');
     }
 
+    // Get photos for a specific house
+    public function getPhotos()
+    {
+        $id = $_GET['habitation_id'];
+        $photos = $this->houseModel->getPhotosByHouseId($id);
+        Flight::json($photos);
+    }
+
+    // ----------------------------------------------------
+    // Helper Methods
+    // ----------------------------------------------------
+
+    // Upload multiple files for a house
     private function uploadFiles($houseId, $files)
     {
         $uploadDir = dirname(__DIR__, 2) . '/public/assets/img/houses/';
@@ -109,10 +127,21 @@ class AdminController
             }
         }
     }
-    
-    public function getPhotos($id)
+
+    // Delete a photo
+    public function deleteHousePic()
     {
-        $photos = $this->houseModel->getPhotosByHouseId($id);
-        Flight::json($photos);
+        $id = $_POST['photo_id'];
+
+        try {
+            $this->crudModel->delete('photo_habitation', $id); 
+
+            Flight::redirect('admin/houses');
+        } catch (\Exception $e) {
+            error_log("AdminController->deleteHouse(): " . $e->getMessage());
+            Flight::render('error', ['message' => "Error deleting house: " . $e->getMessage()]);
+            exit;
+        }
     }
+
 }

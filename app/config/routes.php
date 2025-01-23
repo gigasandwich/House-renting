@@ -17,7 +17,7 @@ use flight\net\Router;
  */
 
 
- $router->get('/', [LandingController::class, 'renderIndex']);
+$router->get('/', [LandingController::class, 'renderIndex']);
 
 
 // ----------------------------------------------------
@@ -51,7 +51,7 @@ $router->group('/admin', function () use ($router) {
 // Ajax calls
 // ----------------------------------------------------
 $router->group('/api', function () use ($router) {
-    $router->get('/photos/@id', [AdminController::class, 'getPhotos']);
+    $router->get('/photos', [AdminController::class, 'getPhotos']);
 });
 
 // ----------------------------------------------------
@@ -80,4 +80,5 @@ $router->group('/update', function () use ($router) {
 // DELETE
 $router->group('/delete', function () use ($router) {
     $router->get("/house", [AdminController::class, 'deleteHouse']);
+    $router->post("/photo", [AdminController::class, 'deleteHousePic']);
 });

@@ -1,0 +1,79 @@
+/* Modal customization */
+.modal-xl {
+    max-width: 80%;
+}
+
+/* Left container: Main photo */
+#mainPhotoContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+#mainPhotoContainer .delete-photo-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    z-index: 10; /* Ensure delete button is above carousel */
+}
+
+/* Right container: Carousel */
+#carouselContainer {
+    height: 100%;
+}
+
+#photosCarousel {
+    height: 100%;
+}
+
+#photosCarousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+#photosCarousel .carousel-item {
+    height: 100%;
+    position: relative; /* To position delete button correctly */
+}
+
+#photosCarousel .delete-photo-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    z-index: 10; /* Ensure delete button is above carousel */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: #000;
+}
+
+.modal-body {
+    display: flex;
+    height: 500px; /* Set consistent modal height */
+    padding: 20px;
+}
