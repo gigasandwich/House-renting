@@ -46,7 +46,7 @@ $baseUrl = Flight::get('flight.base_url');
                     <!-- Search Form -->
                     <form class="d-flex" role="search" method="GET" action="<?= $baseUrl ?>/main/search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                            name="query">
+                            name="query" data-translate="search_placeholder">
                         <button class="btn btn-outline-success" type="submit" data-translate="search">Search</button>
                     </form>
 
@@ -68,18 +68,19 @@ $baseUrl = Flight::get('flight.base_url');
                                     alt="Language Flag" style="width: 20px; height: 20px; margin-right: 5px;">
                                 <select id="languageSelect" class="form-select form-select-sm"
                                     style="width: auto; display: inline-block;">
-                                    <option value="en">English</option>
-                                    <option value="fr">Français</option>
+                                    <option value="en" data-translate="english_btn">English</option>
+                                    <option value="fr" data-translate="french_btn">Français</option>
                                 </select>
                             </a>
                         </li>
                         <!-- Offcanvas Button (Always Visible) -->
                         <li class="nav-item me-3">
                             <button class="btn btn-success" type="button" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" data-translate="settings_button">
                                 <i class="fas fa-cog"></i>
                             </button>
                         </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -87,19 +88,19 @@ $baseUrl = Flight::get('flight.base_url');
         <!-- Offcanvas Navbar -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">User Settings</h5>
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel" data-translate="user_settings">User  Settings</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= $baseUrl ?>/auth/user">Login in an user account</a>
+                        <a class="nav-link" href="<?= $baseUrl ?>/auth/user" data-translate="login_user_account">Login in a user account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= $baseUrl ?>/auth/admin">Login as another admin</a>
+                        <a class="nav-link" href="<?= $baseUrl ?>/auth/admin" data-translate="login_admin">Login as another admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= $baseUrl ?>/auth/logout">Logout</a>
+                        <a class="nav-link" href="<?= $baseUrl ?>/auth/logout" data-translate="logout">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -119,4 +120,4 @@ $baseUrl = Flight::get('flight.base_url');
     <script src="<?= $baseUrl ?>/assets/js/detail.js"></script>
 </body>
 
-</html>
+</html> 

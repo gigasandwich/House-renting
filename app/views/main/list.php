@@ -8,7 +8,7 @@
                          alt="House Photo">
                 </a>
                 <div class="card-body">
-                    <h5 class="card-title"><?= $house['nom_type'] ?></h5>
+                    <h5 class="card-title" data-translate="house_type"><?= $house['nom_type'] ?></h5>
                     <p class="card-text" data-translate="description"><?= $house['description'] ?></p>
                     <p class="card-text">
                         <strong data-translate="bedrooms">Chambres</strong>: <?= $house['chambres'] ?>

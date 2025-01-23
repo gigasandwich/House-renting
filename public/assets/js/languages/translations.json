@@ -74,7 +74,21 @@
         "modify_house_modal_title": "Modify House",
         "house_id_label": "House ID",
         "modify_button": "Modify",
-        "view_photos_modal_title": "House Photos"
+        "view_photos_modal_title": "House Photos",
+        "search": "Search",
+        "search_placeholder": "Search",
+        "house_type": "House Type",
+
+        "description": "Description",
+        "bedrooms": "Chambres",
+        "rent_per_day": "Loyer par jour",
+        "neighborhood": "Quartier",
+        "reserve_this_house": "Reserve this house",
+        "arrival_date": "Arival date",
+        "departure_date": "Departure date",
+        "reserve_now": "Reserve now",
+        "main_photo": "Main Photo",
+        "photos_gallery": "Photos Gallery"
     },
 
     "fr": {
@@ -152,6 +166,20 @@
         "modify_house_modal_title": "Modifier la maison",
         "house_id_label": "ID de la maison",
         "modify_button": "Modifier",
-        "view_photos_modal_title": "Photos de la maison"
+        "view_photos_modal_title": "Photos de la maison",
+        "search": "Rechercher",
+        "search_placeholder": "Recherche",
+        "house_type": "Type de maison",
+
+        "description": "Description",
+        "bedrooms": "Chambres",
+        "rent_per_day": "Loyer par jour",
+        "neighborhood": "Quartier",
+        "reserve_this_house": "Réservez cette habitation",
+        "arrival_date": "Date d'arrivée",
+        "departure_date": "Date de départ",
+        "reserve_now": "Reservez maintenant",
+        "main_photo": "Photo principale",
+        "photos_gallery": "Galerie de photos"
     }
 }
